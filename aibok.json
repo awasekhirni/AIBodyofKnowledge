@@ -1,0 +1,324 @@
+{
+  "AIEngineeringBodyOfKnowledge": {
+    "metadata": {
+      "version": "3.0",
+      "description": "A state-of-the-art, deeply structured AI Engineering Body of Knowledge. It bridges foundational ML with modern GenAI/Agentic ecosystems, breaking down complex architectures into 5-level hierarchies with practical insights for building systems from scratch.",
+      "methodology": "Topics investigated to 5 sub-levels (Domain -> System -> Component -> Mechanism -> Algorithm/Technique) with explicit 'from-scratch' implementation guidance."
+    },
+    "modern_ai_ecosystem_tools": {
+      "note": "Curated SOTA tooling landscape for the modern AI engineer.",
+      "categories": [
+        {
+          "category": "LLM",
+          "tools": [
+            "OpenAI GPT",
+            "Anthropic Claude",
+            "Google Gemini",
+            "Meta Llama",
+            "Mistral AI",
+            "Cohere",
+            "Hugging Face",
+            "Ollama",
+            "vLLM"
+          ]
+        },
+        {
+          "category": "Agentic AI",
+          "tools": [
+            "LangGraph",
+            "CrewAI",
+            "Microsoft AutoGen",
+            "Microsoft Agent Framework",
+            "Llamaindex Workflows",
+            "AWS Strands Agents",
+            "CAMEL",
+            "Agno"
+          ]
+        },
+        {
+          "category": "RAG",
+          "tools": [
+            "LangChain",
+            "LlamaIndex",
+            "Haystack",
+            "DSPy",
+            "RAGFlow",
+            "GraphRAG",
+            "Unstructured",
+            "EmbedChain"
+          ]
+        },
+        {
+          "category": "Embedding",
+          "tools": [
+            "OpenAI Embeddings",
+            "Cohere Embed",
+            "Voyage AI",
+            "Sentence Transformers",
+            "BGE",
+            "Google Vertex AI Embeddings",
+            "Azure OpenAI Embeddings"
+          ]
+        },
+        {
+          "category": "MCP",
+          "tools": [
+            "MCP SDK",
+            "FastMCP",
+            "MCP Registry",
+            "GitHub MCP Server",
+            "Slack MCP Server",
+            "PostgreSQL MCP Server",
+            "Google Drive MCP Server",
+            "Filesystem MCP Server"
+          ]
+        },
+        {
+          "category": "AI Security",
+          "tools": [
+            "NVIDIA NeMo Guardrails",
+            "Guardrails AI",
+            "Microsoft Presidio",
+            "Lakera Guard",
+            "Prompt Security",
+            "Protect AI",
+            "Azure AI Content Safety",
+            "AWS Bedrock Guardrails"
+          ]
+        },
+        {
+          "category": "Observability",
+          "tools": [
+            "LangSmith",
+            "Langfuse",
+            "Arize Phoenix",
+            "Weights & Biases Weave",
+            "TruLens",
+            "Ragas",
+            "Promptfoo",
+            "Helicone"
+          ]
+        },
+        {
+          "category": "Memory",
+          "tools": [
+            "Mem0",
+            "Zep",
+            "Letta",
+            "LangGraph Memory",
+            "Redis",
+            "PostgreSQL",
+            "Neo4j",
+            "Chroma"
+          ]
+        },
+        {
+          "category": "AI Agent",
+          "tools": [
+            "OpenAI Agents SDK",
+            "LangChain Agents",
+            "PydanticAI",
+            "Semantic Kernel",
+            "Google ADK",
+            "AWS Bedrock Agents",
+            "Azure AI Foundry Agent Service"
+          ]
+        },
+        {
+          "category": "Automation",
+          "tools": [
+            "n8n",
+            "Zapier",
+            "Make",
+            "Microsoft Power Automate",
+            "Temporal",
+            "Apache Airflow",
+            "Prefect",
+            "Kestra",
+            "Pipedream"
+          ]
+        },
+        {
+          "category": "Vector Database",
+          "tools": [
+            "Pinecone",
+            "Weaviate",
+            "Qdrant",
+            "Milvus",
+            "Chroma",
+            "pgvector",
+            "Elasticsearch",
+            "Redis",
+            "MongoDB Atlas Vector Search"
+          ]
+        }
+      ]
+    },
+    "deep_dive_systems_architecture": {
+      "note": "5-level deep investigations into core AI systems, focusing on practical implementation from scratch.",
+      "systems": [
+        {
+          "system": "Advanced Retrieval-Augmented Generation (RAG) Engine",
+          "description": "Building a production-grade RAG system beyond naive semantic search.",
+          "level_1_domain": "Data Ingestion & Chunking",
+          "level_2_component": "Semantic-Aware Document Parsing",
+          "level_3_mechanism": "Multimodal Layout Extraction",
+          "level_4_algorithm": "Vision-based Document Parsing (e.g., unstructured.io logic)",
+          "level_5_practical_insight": "Build from scratch: Use OpenCV to detect bounding boxes of text/images, pass cropped regions to a lightweight VLM (like Florence-2) to generate text summaries, and stitch them back into a hierarchical JSON tree preserving document structure."
+        },
+        {
+          "system": "Advanced RAG Engine (Retrieval)",
+          "description": "Implementing high-recall retrieval pipelines.",
+          "level_1_domain": "Hybrid Search & Re-ranking",
+          "level_2_component": "Fusion of Sparse and Dense Retrieval",
+          "level_3_mechanism": "Reciprocal Rank Fusion (RRF)",
+          "level_4_algorithm": "RRF Score Calculation: 1 / (k + rank)",
+          "level_5_practical_insight": "Build from scratch: Execute BM25 (via rank_bm25 library) and HNSW vector search in parallel. Take top-K from both, compute RRF scores without normalizing the underlying values, and return the fused top-N. Bypasses the need to calibrate different scoring scales."
+        },
+        {
+          "system": "Autonomous Agent Orchestration",
+          "description": "Building reliable multi-agent state machines.",
+          "level_1_domain": "Agent Loop & Tool Calling",
+          "level_2_component": "State Management & Routing",
+          "level_3_mechanism": "Directed Acyclic Graphs (DAG) for workflows",
+          "level_4_algorithm": "Conditional Edge Routing based on LLM Structured Output",
+          "level_5_practical_insight": "Build from scratch: Define agent state as a Pydantic schema. Use an LLM with structured output to return a 'next_node' string. Implement a graph router using Python dictionaries where {current_node: {condition: next_node}}. Force the LLM to output valid tool arguments using JSON schema enforcement before adding the tool call to the message history."
+        },
+        {
+          "system": "LLM Inference & Serving Engine",
+          "description": "Optimizing LLM deployment for high throughput.",
+          "level_1_domain": "KV Cache Management",
+          "level_2_component": "Continuous Batching",
+          "level_3_mechanism": "Dynamic Sequence Slot Allocation",
+          "level_4_algorithm": "In-flight Batching Scheduler",
+          "level_5_practical_insight": "Build from scratch: Maintain a Python asyncio queue of incoming requests. Instead of static batches, at each forward pass, pull available requests, pad them to max_seq_len_in_batch, and compute. Post-forward, strip padding, return tokens to respective clients, and immediately inject a new request into the vacated slot without waiting for the batch to finish."
+        },
+        {
+          "system": "Vector Database & ANN Indexing",
+          "description": "Building custom vector search for scale.",
+          "level_1_domain": "Approximate Nearest Neighbor (ANN)",
+          "level_2_component": "Graph-Based Indexing (HNSW)",
+          "level_3_mechanism": "Hierarchical Navigable Small World Graphs",
+          "level_4_algorithm": "Greedy Layer Traversal & Neighbor Heuristics",
+          "level_5_practical_insight": "Build from scratch: Create a multi-layer graph using Python dictionaries. Insert vectors layer-by-layer (probabilistic). For search, start at the top layer, greedily move to the closest neighbor until local minimum, drop a layer, repeat. Use `heapq` to maintain candidate and dynamic nearest-neighbor lists."
+        },
+        {
+          "system": "Model Context Protocol (MCP) Integration",
+          "description": "Building standardized interfaces for LLM tool use.",
+          "level_1_domain": "Protocol Server Architecture",
+          "level_2_component": "Resource & Tool Exposure",
+          "level_3_mechanism": "JSON-RPC 2.0 over Stdio/SSE",
+          "level_4_algorithm": "Schema Mapping & Handler Dispatching",
+          "level_5_practical_insight": "Build from scratch: Create a Python `httpserver` or asyncio stdin/stdout reader. Parse incoming JSON-RPC requests, map the 'method' string (e.g., 'tools/call') to internal Python functions using a registry decorator, execute the function, and wrap the result in a standardized JSON-RPC response envelope."
+        },
+        {
+          "system": "Model Fine-Tuning & Alignment",
+          "description": "Aligning base models to specific instructions.",
+          "level_1_domain": "Parameter-Efficient Fine-Tuning (PEFT)",
+          "level_2_component": "Low-Rank Adaptation (LoRA)",
+          "level_3_mechanism": "Weight Matrix Decomposition",
+          "level_4_algorithm": "Forward pass: Wx + (B(Ax)) * scaling",
+          "level_5_practical_insight": "Build from scratch: Use PyTorch to freeze the base model weights. For a target nn.Linear layer (W), initialize two new matrices A (rank x features) and B (out x rank) with Gaussian and zero weights respectively. Compute output as `base_output + (B(A(input))) * (1/rank)`. Only A and B require gradients."
+        },
+        {
+          "system": "Agentic Memory Architecture",
+          "description": "Giving agents persistent, context-aware memory.",
+          "level_1_domain": "Long-term Semantic Memory",
+          "level_2_component": "Memory Consolidation & Reflection",
+          "level_3_mechanism": "Entity Extraction & Knowledge Graphing",
+          "level_4_algorithm": "Triple Extraction (Subject, Predicate, Object)",
+          "level_5_practical_insight": "Build from scratch: After every N agent turns, prompt an LLM to extract (S, P, O) triples from the conversation. Store these in a `networkx` graph object. When a new user query arrives, run a graph traversal (e.g., BFS) starting from nodes mentioned in the query to pull in relevant historical context dynamically."
+        }
+      ]
+    },
+    "progressive_curriculum": {
+      "novice": {
+        "title": "Novice",
+        "focus": "Understanding concepts, using APIs, and basic data handling.",
+        "skills": [
+          "Prompt engineering (zero-shot, few-shot)",
+          "Calling hosted LLM APIs (OpenAI, Anthropic)",
+          "Basic vector search with local ChromaDB",
+          "Python scripting and JSON manipulation",
+          "Using no-code automation (Zapier, Make)"
+        ]
+      },
+      "intermediate": {
+        "title": "Intermediate",
+        "focus": "Chaining components, building basic RAG, and deploying single agents.",
+        "skills": [
+          "Building RAG pipelines with LangChain/LlamaIndex",
+          "Implementing hybrid search (BM25 + Vector)",
+          "Fine-tuning small models (LoRA via HuggingFace)",
+          "Containerizing models with Docker",
+          "Building single-agent loops with tool calling",
+          "Using observability tools (LangSmith, Weights & Biases)"
+        ]
+      },
+      "advanced": {
+        "title": "Advanced",
+        "focus": "Building distributed systems, custom frameworks, and advanced RAG/Agents.",
+        "skills": [
+          "Building multi-agent state machines (LangGraph, AutoGen)",
+          "Implementing custom HNSW or RAG Fusion algorithms",
+          "Deploying models on Kubernetes with vLLM/Triton",
+          "Writing custom MCP servers for enterprise tools",
+          "Implementing advanced security (NeMo Guardrails, Presidio)",
+          "GraphRAG and Knowledge Graph integration"
+        ]
+      },
+      "expert": {
+        "title": "Expert",
+        "focus": "System architecture, SOTA research implementation, and infrastructure scaling.",
+        "skills": [
+          "Building custom inference engines (PagedAttention, Continuous Batching)",
+          "Designing enterprise Agentic architectures (Microservices + Event-driven)",
+          "Implementing DPO/RLHF training pipelines from scratch",
+          "Authoring custom CUDA kernels for model optimization",
+          "AI Red Teaming and advanced adversarial defense systems",
+          "Architecting distributed vector databases at petabyte scale"
+        ]
+      }
+    },
+    "skills_matrix": {
+      "note": "Mapping modern AI roles to expected proficiency in the deep-dive systems.",
+      "roles": [
+        {
+          "role": "AI Application Developer",
+          "mastery_required": [
+            "RAG Engine",
+            "MCP Integration",
+            "Agentic Memory Architecture"
+          ],
+          "target_level": "Advanced"
+        },
+        {
+          "role": "ML/GenAI Engineer",
+          "mastery_required": [
+            "Model Fine-Tuning & Alignment",
+            "Advanced RAG Engine",
+            "Autonomous Agent Orchestration"
+          ],
+          "target_level": "Expert"
+        },
+        {
+          "role": "AI Infrastructure Engineer",
+          "mastery_required": [
+            "LLM Inference & Serving Engine",
+            "Vector Database & ANN Indexing"
+          ],
+          "target_level": "Expert"
+        },
+        {
+          "role": "AI Architect",
+          "mastery_required": [
+            "All Systems",
+            "Business Strategy",
+            "AI Security & Governance"
+          ],
+          "target_level": "Expert"
+        }
+      ]
+    }
+  }
+}
